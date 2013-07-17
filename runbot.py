@@ -20,17 +20,6 @@ def on_connect(connection, event):
 def on_disconnect(connection, event):
     raise SystemExit()
 
-
-def get_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('server')
-    parser.add_argument('nickname')
-    parser.add_argument('target', help="a nickname or channel")
-    parser.add_argument('-p', '--port', default=6667, type=int)
-    irc.logging.add_arguments(parser)
-    return parser.parse_args()
-
-
 def on_pubmsg(connection, event):
     line = event.arguments[0]
     if line.startswith(call_name):
